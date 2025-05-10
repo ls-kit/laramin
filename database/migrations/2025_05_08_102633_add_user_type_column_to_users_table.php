@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('user_type', ['agency', 'company'])->after('email')->nullable();
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->enum('user_type', ['agency', 'company'])->after('email')->nullable();
+        // });
     }
 
     /**
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('user_type');
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->dropColumn('user_type');
+        // });
     }
 };

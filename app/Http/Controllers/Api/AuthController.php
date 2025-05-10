@@ -12,12 +12,19 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends BaseController
 {
-    public function login(AuthRequest $request): JsonResponse
+    public function login(AuthRequest $request):JsonResponse
     {
         $credentials = $request->only(['email', 'password']);
 
         if (auth()->attempt($credentials)) {
             $accessToken = auth()->user()->createToken('authToken')->accessToken;
+            //  if(auth()->user()->user_type === 'agency')
+            //  {
+            //     return route('agency.dashboard');
+            //  }
+            //  elseif(auth()->user()->user_type === 'company'){
+            //     route('company.dashboard');
+            //  }
 
             return $this->successResponse([
                 'access_token' => $accessToken,

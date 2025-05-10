@@ -26,19 +26,22 @@
                     <a href="{{ url('inventory') }}"><i
                             class="ik ik-shopping-cart"></i><span>{{ __('Inventory') }}</span> </a>
                 </div>
-                <div class="nav-item {{ $segment1 == 'companies' ? 'active' : '' }}">
-                    <a href="{{ url('companies') }}">
-                        <i class="ik ik-bar-chart-2"></i>
-                        <span>Companies</span>
-                    </a>
-                </div>
-                <div class="nav-item {{ $segment1 == 'agencies' ? 'active' : '' }}">
-                    <a href="{{ url('agencies') }}">
-                        <i class="ik ik-bar-chart-2"></i>
-                        <span>Agencies</span>
-                    </a>
-                </div>
-
+                @can('company_dashboard')
+                    <div class="nav-item {{ $segment1 == 'companies' ? 'active' : '' }}">
+                        <a href="{{ url('companies') }}">
+                            <i class="ik ik-bar-chart-2"></i>
+                            <span>Companies</span>
+                        </a>
+                    </div>
+                @endcan
+                @can('agency_dashboard')
+                    <div class="nav-item {{ $segment1 == 'agencies' ? 'active' : '' }}">
+                        <a href="{{ url('agencies') }}">
+                            <i class="ik ik-bar-chart-2"></i>
+                            <span>Agencies</span>
+                        </a>
+                    </div>
+                @endcan
                 <div class="nav-item {{ $segment1 == 'pos' ? 'active' : '' }}">
                     <a href="{{ url('pos') }}"><i class="ik ik-printer"></i><span>{{ __('POS') }}</span> </a>
                 </div>

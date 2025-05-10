@@ -44,13 +44,14 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/dashboard', function () {
 		return view('pages.dashboard');
 	})->name('dashboard');
+
     // user_type
     Route::view('/companies','companies.index')->name('companies.index');
     Route::view('/agencies','agencies.index')->name('agencies.index');
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){
-	Route::get('/users', [UserController::class,'index']);
-	Route::get('/user/get-list', [UserController::class,'getUserList']);
+	    Route::get('/users', [UserController::class,'index']);
+	    Route::get('/user/get-list', [UserController::class,'getUserList']);
 		Route::get('/user/create', [UserController::class,'create']);
 		Route::post('/user/create', [UserController::class,'store'])->name('create-user');
 		Route::get('/user/{id}', [UserController::class,'edit']);
